@@ -1,19 +1,21 @@
- import React, {Component} from "react"
+import React, {Component} from "react"
 
 class YATDL extends Component{
     constructor(props){
         super(props)
-        this.state = {list: [],
-        message : ""};
+        this.state = {
+            list: "",
+        message: ""}
     }
 
     addMessage = (item) => {
-        this.setState({message: item})
+        this.setState({message: item.target.value})
     }
     
     addToList = () => {
-        this.setState({list: "hello"})//{this.state.message}
+        this.setState({list: this.state.message})
     }
+
 
     strikeFromList= () => {}
 
@@ -24,9 +26,9 @@ class YATDL extends Component{
         return(
         <div>
             <h1>Yet Another Todo List</h1>
-            <input placeholder="Enter your tasks here" onChange ={event => this.addMessage(event)}></input>
+            <input type="string" placeholder="Enter your tasks here" onChange ={event => this.addMessage(event)}></input>
             <button onClick={this.addToList}>Add</button>
-            <p onClick="{this.clearList}">clear</p>
+            <p onClick={this.clearList}>clear</p>
             <p>{this.state.list}</p>
 
         </div>
